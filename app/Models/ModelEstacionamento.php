@@ -16,7 +16,7 @@ class ModelEstacionamento extends Model
 
     public function relUsers()
     {
-        return $this->hasOne(related:'App\Models\User', foreignKey:'id', localKey: 'id_user');
+        return $this->hasOne('App\Models\User', 'id', 'id_user');
     }
 
 

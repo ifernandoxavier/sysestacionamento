@@ -2,39 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EstacionamentoRequest;
 use Illuminate\Http\Request;
 use App\Models\ModelEstacionamento;
 use App\Models\User;
+use App\Http\Requests\EstacionamentoRequest;
 
 class EstacionamentoController extends Controller
-{
-    private $objCarro;
-    private $objUser;
-
-    public function __construct()
-    {
-        $this->objUser = new User();
-        $this->objCarro = new ModelEstacionamento();
-    }
-    
+{    
     public function index()
     {
         //dd($this->objCarro->all());
         //dd($this->objCarro->find(3)->relUsers);
-        $carro=$this->objCarro->all();
+        $carro=ModelEstacionamento::all();
         return view('estacionamento', compact('carro'));
     }
 
     public function create()
     {
-        $users=$this->objUser->all();
+        $users=User::all();
         return view('create', compact('users'));
     }
 
     public function store(EstacionamentoRequest $request)
     {
-        $cad=$this->objCarro->create([
+        $cad=ModelEstacionamento::create([
             'placa'=>$request->placa,
             'modelo'=>$request->modelo,
             'id_user'=>$request->id_user,
@@ -48,18 +39,18 @@ class EstacionamentoController extends Controller
     }
     public function show($id)
     {
-        $carro=$this->objCarro->find($id);
+        $carro=ModelEstacionamento::find($id);
         return view('show', compact('carro'));
     }
     public function edit($id)
     {
-        $carro=$this->objCarro->find($id);
-        $users=$this->objUser->all();
+        $carro=ModelEstacionamento::find($id);
+        $users=User::all();
         return view('create', compact('carro', 'users'));
     }
     public function update(EstacionamentoRequest $request, $id)
     {
-        $this->objCarro->where(['id'=>$id])->update([
+        ModelEstacionamento::where(['id'=>$id])->update([
             'placa'=>$request->placa,
             'modelo'=>$request->modelo,
             'id_user'=>$request->id_user,
@@ -72,7 +63,7 @@ class EstacionamentoController extends Controller
     public function destroy($id)
     {
        // return redirect('estacionamento');
-       $del=$this->objCarro->destroy($id);
+       $del=ModelEstacionamento::destroy($id);
        return($del)?"sim":"não";
     }
 }

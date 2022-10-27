@@ -15,10 +15,10 @@
         </div>
     @endif
     @if (isset($carro))
-        <form name="formEdit" id="formEdit" method="POST" action="{{url("update/$carro->id")}}">
+        <form name="formEdit" id="formEdit" method="POST" action="{{url("estacionamento/$carro->id")}}">
             @method('PUT')
     @else
-        <form name="formCad" id="formCad" method="POST" action="{{url('estacionamento/store')}}">
+        <form name="formCad" id="formCad" method="POST" action="{{url('estacionamento')}}">
     @endif
     <div class="createCarros">
             @csrf

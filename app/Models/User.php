@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function relEstacionamento()
     {
-        return $this->hasMany(related:'App\Models\ModelEstacionamento', foreignKey:'id_user');
+        return $this->hasMany('App\Models\ModelEstacionamento', 'id_user');
     }
 }

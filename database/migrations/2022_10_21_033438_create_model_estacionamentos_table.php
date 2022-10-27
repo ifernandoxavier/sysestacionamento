@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carros', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_user')->unsigned();
+            $table->id();
+            $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('placa')->unique();
             $table->string('modelo');

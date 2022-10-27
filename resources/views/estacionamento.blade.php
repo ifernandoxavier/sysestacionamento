@@ -5,7 +5,7 @@
 @section ('content')
 
     <div class="btnCadatrar mt-3 mb-4 btn-lg">
-      <a href="{{url('create')}}">
+      <a href="{{url('estacionamento/create')}}">
         <button type="button" class="btn btn-success">Cadastrar</ion-icon></button>
       </a>
     </div>
@@ -30,13 +30,13 @@
                   <td class="upperTexto">{{ date('d/m/Y', strtotime($carros->date))}}</td>
                   <td class="upperTexto">{{$carros->time}}</td>
                   <td>
-                    <a href="{{url("edit/$carros->id")}}">
+                    <a href="{{url("estacionamento/$carros->id/edit")}}">
                       <button type="button" class="btn btn-primary btn-sm"><ion-icon name="create-outline"></ion-icon></button>
                     </a>
                     <a href="{{url("estacionamento/$carros->id")}}">
                       <button type="button" class="btn btn-dark btn-sm"><ion-icon name="eye-outline"></ion-icon></button>
                     </a>
-                    <a href="{{url("delet/$carros->id")}}" class="js-del">
+                    <a href="{{url("estacionamento/$carros->id")}}" class="js-del">
                       <button type="button" class="btn btn-danger btn-sm"><ion-icon name="cash-outline"></ion-icon></button>
                     </a>
                   </td>
